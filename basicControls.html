@@ -1,194 +1,217 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<style>
-div.container {
-    width: 100%;
-    border: 1px solid gray;
-}
+    <style>
+        div.container {
+            width: 100%;
+            border: 1px solid gray;
+        }
 
-header, footer {
-    padding: 1em;
-    color: white;
-    background-color: black;
-    clear: left;
-    text-align: center;
-}
+        header,
+        footer {
+            padding: 1em;
+            color: white;
+            background-color: black;
+            clear: left;
+            text-align: center;
+        }
 
-nav {
-    float: left;
-    max-width: 160px;
-    margin: 0;
-    padding: 1em;
-}
+        nav {
+            float: left;
+            max-width: 160px;
+            margin: 0;
+            padding: 1em;
+        }
 
-nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-   
-nav ul a {
-    text-decoration: none;
-}
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
 
-article {
-    margin-left: 170px;
-    border-left: 1px solid gray;
-    padding: 1em;
-    overflow: hidden;
-}
-/*  SECTIONS  */
-.section {
-	clear: both;
-	padding: 0px;
-	margin: 0px;
-}
+        nav ul a {
+            text-decoration: none;
+        }
 
-/*  COLUMN SETUP  */
-.col {
-	display: block;
-	float:left;
-	margin: 1% 0 1% 1.6%;
-}
-.col:first-child { margin-left: 0; }
+        article {
+            margin-left: 170px;
+            border-left: 1px solid gray;
+            padding: 1em;
+            overflow: hidden;
+        }
+        /*  SECTIONS  */
 
-/*  GROUPING  */
-.group:before,
-.group:after { content:""; display:table; }
-.group:after { clear:both;}
-.group { zoom:1; /* For IE 6/7 */ }
-/*  GRID OF TWO  */
-.span_2_of_2 {
-	width: 100%;
-}
-.span_1_of_2 {
-	width: 49.2%;
-}
+        .section {
+            clear: both;
+            padding: 0px;
+            margin: 0px;
+        }
+        /*  COLUMN SETUP  */
 
-/*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
+        .col {
+            display: block;
+            float: left;
+            margin: 1% 0 1% 1.6%;
+        }
 
-@media only screen and (max-width: 480px) {
-	.col { 
-		margin: 1% 0 1% 0%;
-	}
-}
+        .col:first-child {
+            margin-left: 0;
+        }
+        /*  GROUPING  */
 
-@media only screen and (max-width: 480px) {
-	.span_2_of_2, .span_1_of_2 { width: 100%; }
-}
-/* The switch - the box around the slider */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
+        .group:before,
+        .group:after {
+            content: "";
+            display: table;
+        }
 
-/* Hide default HTML checkbox */
-.switch input {display:none;}
+        .group:after {
+            clear: both;
+        }
 
-/* The slider */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
+        .group {
+            zoom: 1;
+            /* For IE 6/7 */
+        }
+        /*  GRID OF TWO  */
 
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
+        .span_2_of_2 {
+            width: 100%;
+        }
 
-input:checked + .slider {
-  background-color: #2196F3;
-}
+        .span_1_of_2 {
+            width: 49.2%;
+        }
+        /*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
 
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
+        @media only screen and (max-width: 480px) {
+            .col {
+                margin: 1% 0 1% 0%;
+            }
+        }
 
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
+        @media only screen and (max-width: 480px) {
+            .span_2_of_2,
+            .span_1_of_2 {
+                width: 100%;
+            }
+        }
+        /* The switch - the box around the slider */
 
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        /* Hide default HTML checkbox */
 
-.slider.round:before {
-  border-radius: 50%;
-}
-img{
-    width:100%;
-    max-width:400px;
-}
-</style>
+        .switch input {
+            display: none;
+        }
+        /* The slider */
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked+.slider {
+            background-color: #2196F3;
+        }
+
+        input:focus+.slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked+.slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+        /* Rounded sliders */
+
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+
+        img {
+            width: 100%;
+            max-width: 400px;
+        }
+    </style>
 </head>
+
 <body>
 
-<div class="container">
+    <div class="container">
 
-<header>
-   <h1>Doorothy</h1>
-</header>
-  
-<nav>
-  <ul>
-    <li><a href="#">London</a></li>
-    <li><a href="#">Paris</a></li>
-    <li><a href="#">Tokyo</a></li>
-  </ul>
-</nav>
+        <header>
+            <h1>Doorothy</h1>
+        </header>
 
-<article>
-  <h1>Status and Basic Controls</h1>
-</header>
-  <p>London is the capital city of England. It is the most populous city in the  United Kingdom, with a metropolitan area of over 13 million inhabitants.</p>
-  <p>Standing on the River Thames, London has been a major settlement for two millennia, its history going back to its founding by the Romans, who named it Londinium.</p>
-</article>
-<article>
-        <div class="section group">
+        <nav>
+            <ul>
+                <li><a href="login.html">Log Out</a></li>
+                <li><a href="">Timer</a></li>
+                <li><a href="">Notifications</a></li>
+            </ul>
+        </nav>
+
+        <article>
+            <h1>Status and Basic Controls</h1>
+        </article>
+        <article>
+            <div class="section group">
                 <div class="col span_1_of_2">
-                        <h2>Door 1</h2>
-                        <img src="garageOpen.svg"> 
-                        <br>
-                        <label class="switch">
+                    <h2>Door 1</h2>
+                    <img src="garageOpen.svg">
+                    <br>
+                    <label class="switch">
                                 <input type="checkbox" checked>
                                 <span class="slider"></span>
                         </label>
-                              
-               </div>
+
+                </div>
                 <div class="col span_1_of_2">
-                        <h2>Door 2</h2>                        
-                        <img src="garageClosed.svg">
-                        <br>
-                        <label class="switch">
+                    <h2>Door 2</h2>
+                    <img src="garageClosed.svg">
+                    <br>
+                    <label class="switch">
                                 <input type="checkbox">
                                 <span class="slider"></span>
                         </label>
-                                      
-                </div>
-         </div>
- </article>
-<footer>Copyright &copy; W3Schools.com</footer>
 
-</div>
+                </div>
+            </div>
+        </article>
+        <footer>Copyright &copy; W3Schools.com</footer>
+
+    </div>
 
 </body>
+
 </html>
