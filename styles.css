@@ -3,46 +3,25 @@ div.container {
     width: 100%;
     border: 1px solid gray;
 }
-/*layout of the page is based on w3school tutorials
-https://www.w3schools.com/html/html_layout.asp*/
-header,
-footer {
-    padding: 1em;
-    color: white;
-    background-color: #4C9791;
-    clear: left;
-    text-align: center;
+header, footer {
+  padding: 1em;
+  color: white;
+  background-color: #296DC7;
+  text-align: center;
 }
-
+div.container {
+  background-color: #90B7E7;
+}
 nav {
-    float: left;
-    max-width: 160px;
-    margin: 0;
-    padding: 1em;
+  float: left;
+  padding: 1em;
 }
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-nav ul a {
-    text-decoration: none;
-}
-
 article {
-    margin-left: 170px;
-    border-left: 1px solid gray;
-    padding: 1em;
-    overflow: hidden;
-}
-
-.section {
-    clear: both;
-    padding: 0px;
-    margin: 0px;
-}
-
+  margin-left: 150px;
+  border-left: 1px solid black;
+  padding: 1em;
+  overflow: hidden;
+},
 .col {
     display: block;
     float: left;
