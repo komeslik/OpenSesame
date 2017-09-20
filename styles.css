@@ -21,7 +21,7 @@ article {
   border-left: 1px solid black;
   padding: 1em;
   overflow: hidden;
-},
+}
 .col {
     display: block;
     float: left;
