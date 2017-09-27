@@ -73,9 +73,12 @@
       <h2>Timer</h2>
       <p>Time Before Auto-Close (In Minutes): <input type="number" name="timer" id="closeTime"></p>
       Enable: <label class="switch">
-                <input type="checkbox" id="timerEnable">
-                <span class="slider"></span>
-              </label>
+        <input type="checkbox" id="timerEnable">
+        <span class="slider"></span>
+      </label>
+      <div id="timerIcon">
+        <img id="door2" src="garageClosed.svg" alt="Image not found">
+      </div>
     </article>
   </div>
   <div class="container" id="notifications" style="display: none">
@@ -85,24 +88,27 @@
         Subscribe for notifications when doors close
       </p>
       <label class="switch">
-        <input type="checkbox" checked>
-        <span class="slider"></span>
+          <input type="checkbox" id="doorClosedNotification">
+          <span class="slider"></span>
       </label>
       <p>
         Subscribe for notifications when doors open
       </p>
       <label class="switch">
-        <input type="checkbox" >
-        <span class="slider"></span>
+          <input type="checkbox" id="doorOpenNotification">
+          <span class="slider"></span>
       </label>
       <p>
         Subscribe for notifications if the door was left open too long
       </p>
       <label class="switch">
-        <input type="checkbox">
-        <span class="slider"></span>
+          <input type="checkbox" id="doorLeftOpenNotification">
+          <span class="slider"></span>
       </label>
-      <p>Define too long!: <input type="number" name="timer"></p>
+      <p>Define too long!: <input type="number" name="timer" id="howLong"></p>
+      <div id="notIcon">
+        <img id="door3" src="garageClosed.svg" alt="Image not found">
+      </div>
     </article>
   </div>
   <footer>Copyright DanK Entrprises</footer>
