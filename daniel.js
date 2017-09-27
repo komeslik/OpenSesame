@@ -31,7 +31,7 @@ function user(un, pass, email, door) {
   this.notifyClosed = false;
   this.notifyOpen = false;
   this.notifyOpenTooLong = false;
-  this.tooLongInterval;
+  this.howLong;
 }
 
 function login() {
@@ -52,12 +52,26 @@ function login() {
       var image3 = document.getElementById("door3");
       image3.src = "garageOpen.svg";
     }
+    if (curUser.door == 'closed') {
+      var image = document.getElementById("door1");
+      image.src = "garageClosed.svg";
+      var image2 = document.getElementById("door2");
+      image2.src = "garageClosed.svg";
+      var image3 = document.getElementById("door3");
+      image3.src = "garageClosed.svg";
+    }
+    document.getElementById('doorClosedNotification').checked = curUser.doorClosedNotification;
+    document.getElementById('doorOpenNotification').checked = curUser.doorOpenNotification;
+    document.getElementById('doorLeftOpenNotification').checked = curUser.notifyOpenTooLong;
+    document.getElementById('howLong').value = curUser.howLong;
+    notifyOpenTooLong();
   } else {
     alert("Invalid credentials.");
   }
 }
 
 function logout() {
+  document.getElementById('howLong').value = "";
   curUser = null;
   show('logout');
 }
@@ -113,6 +127,7 @@ function doorToggle() {
     image3.src = "downArrow.gif";
     closeTimeout = setTimeout(closeDoor, 5000);
   }
+  notifyTimeout = setTimeout(notifyOpenTooLong, 5000);
 }
 
 function openDoor() {
@@ -195,23 +210,25 @@ function notifyWhenOpen() {
 
 function notifyOpenTooLong() {
   curUser.notifyOpenTooLong = document.getElementById("doorLeftOpenNotification").checked;
-  if (curUser.notifyOpenTooLong) {
+  if (curUser.notifyOpenTooLong && curUser.door == 'open') {
     var curDate = new Date().getTime();
     var howLong = document.getElementById("howLong").value;
     if (howLong < 0) {
       alert("Invalid Interval. Please check your interval.");
     } else {
-      var deadline = curDate.valueOf() + howLong * 60000;
-      curUser.tooLongInterval = setInterval(function(){    
+      curUser.howLong = howLong;
+      var deadline = curDate.valueOf() + curUser.howLong * 60000;
+      tooLongInterval = setInterval(function() {
         var curDate2 = new Date().getTime();
-        if(curDate2.valueOf()>deadline){
-            alert("Door is open for more than specified period!!");
-            document.getElementById("doorLeftOpenNotification").checked = false;
-            clearInterval(curUser.tooLongInterval);
-        }}, 3000);
+        if (curDate2.valueOf() > deadline) {
+          alert("Door is open for more than specified period!!");
+          document.getElementById("doorLeftOpenNotification").checked = false;
+          clearInterval(tooLongInterval);
+        }
+      }, 3000);
     }
   } else {
-    clearInterval(curUser.tooLongInterval);
+    clearInterval(tooLongInterval);
   }
 }
 
