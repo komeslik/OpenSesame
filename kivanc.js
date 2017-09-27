@@ -8,6 +8,8 @@ var notifyClosed = false;
 var notifyOpen = false;
 var notifyOpenTooLong = false;
 
+var tooLongInterval;
+
 function doorToggle(){
     var image = document.getElementById("door1");
     if(image.src.match("garageClosed")||image.src.match("downArrow")){
@@ -81,6 +83,26 @@ function notifyWhenOpen(){
 }
 function notifyOpenTooLong(){
     notifyOpenTooLong = document.getElementById("doorLeftOpenNotification").checked;
+    if(notifyOpenTooLong){
+        var curDate = new Date().getTime();
+        var howLong = document.getElementById("howLong").value;        
+        if(howLong<0) {
+            alert("Invalid Interval. Please check your interval.");       
+        }else{
+            var deadline = curDate.valueOf()+howLong*100; 
+            alert(howLong);
+            tooLongInterval = setInterval(tooLongCheck(deadline), 3000);
+        }
+    }else{
+        clearInterval(tooLongInterval);
+    }
+}
+function tooLongCheck(deadline){
+    alert("hiya");
+    var curDate2 = new Date().getTime();
+    if(curDate2.valueOf()>deadline){
+        alert("Door is open for more than specified period!!");
+    }
 }
 document.getElementById("timerEnable").addEventListener("change", toggleTimer, false);
 document.getElementById("doorOpenNotification").addEventListener("change", notifyWhenOpen, false);
