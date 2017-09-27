@@ -6,7 +6,7 @@ var timerTimeout3;
 
 var notifyClosed = false;
 var notifyOpen = false;
-var notifyOpenTooLong = false;
+var notifyOpenTooLongVar = false;
 
 var tooLongInterval;
 
@@ -82,28 +82,29 @@ function notifyWhenOpen(){
     notifyOpen = document.getElementById("doorOpenNotification").checked;
 }
 function notifyOpenTooLong(){
-    notifyOpenTooLong = document.getElementById("doorLeftOpenNotification").checked;
-    if(notifyOpenTooLong){
+    notifyOpenTooLongVar = document.getElementById("doorLeftOpenNotification").checked;
+    alert(notifyOpenTooLongVar);
+    if(notifyOpenTooLongVar){
         var curDate = new Date().getTime();
         var howLong = document.getElementById("howLong").value;        
         if(howLong<0) {
             alert("Invalid Interval. Please check your interval.");       
         }else{
-            var deadline = curDate.valueOf()+howLong*100; 
+            var deadline = curDate.valueOf()+howLong*60000; 
             alert(howLong);
-            tooLongInterval = setInterval(tooLongCheck(deadline), 3000);
+            tooLongInterval = setInterval(function(){    
+                var curDate2 = new Date().getTime();
+                if(curDate2.valueOf()>deadline){
+                    alert("Door is open for more than specified period!!");
+                    document.getElementById("doorLeftOpenNotification").checked = false;
+                    clearInterval(tooLongInterval);
+                }}, 3000);
         }
     }else{
         clearInterval(tooLongInterval);
     }
 }
-function tooLongCheck(deadline){
-    alert("hiya");
-    var curDate2 = new Date().getTime();
-    if(curDate2.valueOf()>deadline){
-        alert("Door is open for more than specified period!!");
-    }
-}
+
 document.getElementById("timerEnable").addEventListener("change", toggleTimer, false);
 document.getElementById("doorOpenNotification").addEventListener("change", notifyWhenOpen, false);
 document.getElementById("doorClosedNotification").addEventListener("change", notifyWhenClosed, false);
