@@ -2,36 +2,56 @@
 <html>
 
 <head>
-        <link rel="stylesheet" href="styles.css">   
-         <title>Open Sesame</title>
-        
+  <link rel="stylesheet" href="styles.css">
+  <title>Open Sesame</title>
+
 </head>
 
 <body>
 
-    <div class="container">
+  <div class="container">
 
-      <header>
-          <h1>Open Sesame</h1>
-      </header>
+    <header>
+      <h1>Open Sesame</h1>
+    </header>
 
-      <nav>
-          <ul>
-              <li><a href="login.html">Login</a></li>
-              <li><a href="recoverPassword.html">Recover Password</a></li>
-          </ul>
-      </nav>
+    <nav>
+      <ul>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="recoverPassword.html">Recover Password</a></li>
+      </ul>
+    </nav>
 
-      <article>
-          <h2>Create Account</h2>
-          <p>Username: <input type="text" name="user"></p>
-          <p>Password: <input type="text" name="pass"></p>
-          <input type="submit" value="Create Account">
-      </article>
+    <article>
+      <h2>Create Account</h2>
+      <p>Email: <input type="text" name="email" id="email"></p>
+      <p>Username: <input type="text" name="un" id="un"></p>
+      <p>Password: <input type="text" name="pass" id="pass"></p>
+      <p>Repeat Password: <input type="text" name="pass2"></p>
+      <button onclick="createUser()">Create Account</button>
+    </article>
 
-        <footer>Copyright DanK Entrprises</footer>
+    <footer>Copyright DanK Entrprises</footer>
 
-    </div>
+    <script>
+      var users = [new user("guest", "guest"), new user("dank", "123")];
+      function user(un, pass, email){
+        this.un = un;
+        this.pass = pass;
+        this.email = email;
+      }
+      function addUser(){
+        var newUser = new user(document.getElementById('un').value, document.getElementById('pass').value, document.getElementById('email').value);
+        //alert(users.find(this.un == newUser.un));
+        if(users.some(function(e) e.un == newUser.un){
+          users.push(user);
+        } else {
+          alert("Username already exists.");
+        }
+      }
+    </script>
+
+  </div>
 
 </body>
 
