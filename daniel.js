@@ -201,22 +201,20 @@ function notifyOpenTooLong() {
     if (howLong < 0) {
       alert("Invalid Interval. Please check your interval.");
     } else {
-      var deadline = curDate.valueOf() + howLong * 100;
-      alert(howLong);
-      curUser.tooLongInterval = setInterval(tooLongCheck(deadline), 3000);
+      var deadline = curDate.valueOf() + howLong * 60000;
+      curUser.tooLongInterval = setInterval(function(){    
+        var curDate2 = new Date().getTime();
+        if(curDate2.valueOf()>deadline){
+            alert("Door is open for more than specified period!!");
+            document.getElementById("doorLeftOpenNotification").checked = false;
+            clearInterval(curUser.tooLongInterval);
+        }}, 3000);
     }
   } else {
     clearInterval(curUser.tooLongInterval);
   }
 }
 
-function tooLongCheck(deadline) {
-  alert("hiya");
-  var curDate2 = new Date().getTime();
-  if (curDate2.valueOf() > deadline) {
-    alert("Door is open for more than specified period!!");
-  }
-}
 document.getElementById("timerEnable").addEventListener("change", toggleTimer, false);
 document.getElementById("doorOpenNotification").addEventListener("change", notifyWhenOpen, false);
 document.getElementById("doorClosedNotification").addEventListener("change", notifyWhenClosed, false);
