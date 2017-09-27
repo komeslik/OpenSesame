@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <title>Open Sesame</title>
+</head>
+<style>
+
+</style>
+<body>
+        <header>
+                <h1>Open Sesame</h1>
+        </header>        
+        <nav>
+                <ul>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="login.html">Log Out</a></li>
+                    <li><a href="recoverPassword.html">Recover Password</a></li>
+                    <li><a href="createAccount.html">Create Account</a></li>
+                    <li><a href="basicControls.html">Controls</a></li>
+                    <li><a href="timer.html">Timer</a></li>
+                    <li><a href="notifications.html">Notifications</a></li>
+                </ul>
+        </nav>
+      
+    <div class="container" style="display: none;">
+            
+                  <article>
+                      <h2>Create Account</h2>
+                      <p>Username: <input type="text" name="user"></p>
+                      <p>Password: <input type="text" name="pass"></p>
+                      <input type="submit" value="Create Account">
+                  </article>
+
+    </div>
+    <div class="container">
+
+                    <article>
+                        <h2>Login</h2>
+                        <p>Username: <input type="text" name="user"></p>
+                        <p>Password: <input type="text" name="pass"></p>
+                        <input type="submit" value="Submit">
+                    </article>
+        
+            
+    </div>
+    <div class="container"style="display: none">
+            
+
+                  <article>
+                      <h2>Recover Password</h2>
+                      <p>Username: <input type="text" name="user"></p>
+                      <input type="submit" value="Submit">
+                  </article>
+            
+    </div>
+    <div class="container" style="display: none">
+
+
+        <article>
+            <h2>Status and Basic Controls</h2>
+        </article>
+        <article>
+            <div class="section group">
+                <div class="col span_1_of_2">
+                    <h2>Door 1</h2>
+                    <img id="door1" onclick="doorToggle()" src="garageClosed.svg" alt="Image not found">
+                    <!-- <img id="upArrow" src="uparrow.gif"alt="up" style="position:absolute; top: 0px; left: 100px"> -->
+                    <!-- "https://icons8.com">Icon pack by Icons8 -->
+                    <br>
+                </div>
+            </div>
+        </article>
+    </div>
+    <div class="container" style="display: none">
+
+                    <article>
+                        <h2>Timer</h2>
+                        <p>Time Before Auto-Close (In Minutes): <input type="number" name="timer" id="closeTime"></p>
+                        Enable: <label class="switch">
+                                <input type="checkbox" id="timerEnable">
+                                <span class="slider"></span>
+                              </label>
+                    </article>
+            
+    </div>
+    <div class="container" style="display: none">
+
+                  <article>
+                      <h2>Sign Up for Notifications</h2>
+                      <p>
+                          Subscribe for notifications when doors close
+                      </p>
+                      <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                    <p>
+                        Subscribe for notifications when doors open
+                    </p>
+                    <label class="switch">
+                        <input type="checkbox" >
+                        <span class="slider"></span>
+                    </label>
+                    <p>
+                        Subscribe for notifications if the door was left open too long
+                    </p>
+                    <label class="switch">
+                        <input type="checkbox" >
+                        <span class="slider"></span>
+                    </label>
+                    <p>Define too long!: <input type="number" name="timer"></p>
+                  </article>
+            
+    </div>
+    <footer>Copyright DanK Entrprises</footer>
+    <script src="kivanc.js"></script>        
+</body>
+</html>

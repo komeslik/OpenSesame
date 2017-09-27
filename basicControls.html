@@ -4,6 +4,7 @@
 <head>
     <link rel="stylesheet" href="styles.css">
     <title>Open Sesame</title>
+    <script src="kivanc.js"></script>    
 </head>
 <style>
 
@@ -43,30 +44,4 @@
     </div>
 
 </body>
-<script>
-    var openTimeout;
-    var closeTimeout;
-    function doorToggle(){
-        var image = document.getElementById("door1");
-        if(image.src.match("garageClosed")){
-            clearTimeout(closeTimeout);
-            clearTimeout(openTimeout);
-            image.src="upArrow.gif";
-            openTimeout = setTimeout(openDoor, 5000);
-        }else{
-            clearTimeout(openTimeout);
-            clearTimeout(closeTimeout);
-            image.src = "downArrow.gif";
-            closeTimeout = setTimeout(closeDoor, 5000);
-        }
-    }
-    function openDoor(){
-        var image = document.getElementById("door1");
-        image.src = "garageOpen.svg";
-    }
-    function closeDoor(){
-        var image = document.getElementById("door1");
-        image.src = "garageClosed.svg";
-    }
-</script>
 </html>
