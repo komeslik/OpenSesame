@@ -8,11 +8,6 @@ var timerTimeout1;
 var timerTimeout2;
 var timerTimeout3;
 
-var notifyClosed = false;
-var notifyOpen = false;
-var notifyOpenTooLong = false;
-var tooLongInterval;
-
 function show(divId) {
   if (divId == 'logout') { //Change links shown
     document.getElementById('isUser').style.display = 'none';
@@ -33,6 +28,10 @@ function user(un, pass, email, door) {
   this.pass = pass;
   this.email = email;
   this.door = door;
+  this.notifyClosed = false;
+  this.notifyOpen = false;
+  this.notifyOpenTooLong = false;
+  this.tooLongInterval;
 }
 
 function login() {
@@ -45,9 +44,13 @@ function login() {
     document.getElementById('password').value = "";
     curUser = users[userI];
     show('controls');
-    if(curUser.door == 'open'){
+    if (curUser.door == 'open') {
       var image = document.getElementById("door1");
       image.src = "garageOpen.svg";
+      var image2 = document.getElementById("door2");
+      image2.src = "garageOpen.svg";
+      var image3 = document.getElementById("door3");
+      image3.src = "garageOpen.svg";
     }
   } else {
     alert("Invalid credentials.");
@@ -120,7 +123,7 @@ function openDoor() {
   image2.src = "garageOpen.svg";
   var image3 = document.getElementById("door3");
   image3.src = "garageOpen.svg";
-  if (notifyOpen) {
+  if (curUser.notifyOpen) {
     alert("Door1 open!!")
   }
 }
@@ -133,7 +136,7 @@ function closeDoor() {
   image2.src = "garageClosed.svg";
   var image3 = document.getElementById("door3");
   image3.src = "garageClosed.svg";
-  if (notifyClosed) {
+  if (curUser.notifyClosed) {
     alert("Door1 closed!!")
   }
 }
@@ -183,16 +186,16 @@ function deactivateTimer() {
 }
 
 function notifyWhenClosed() {
-  notifyClosed = document.getElementById("doorClosedNotification").checked;
+  curUser.notifyClosed = document.getElementById("doorClosedNotification").checked;
 }
 
 function notifyWhenOpen() {
-  notifyOpen = document.getElementById("doorOpenNotification").checked;
+  curUser.notifyOpen = document.getElementById("doorOpenNotification").checked;
 }
 
 function notifyOpenTooLong() {
-  notifyOpenTooLong = document.getElementById("doorLeftOpenNotification").checked;
-  if (notifyOpenTooLong) {
+  curUser.notifyOpenTooLong = document.getElementById("doorLeftOpenNotification").checked;
+  if (curUser.notifyOpenTooLong) {
     var curDate = new Date().getTime();
     var howLong = document.getElementById("howLong").value;
     if (howLong < 0) {
@@ -200,10 +203,10 @@ function notifyOpenTooLong() {
     } else {
       var deadline = curDate.valueOf() + howLong * 100;
       alert(howLong);
-      tooLongInterval = setInterval(tooLongCheck(deadline), 3000);
+      curUser.tooLongInterval = setInterval(tooLongCheck(deadline), 3000);
     }
   } else {
-    clearInterval(tooLongInterval);
+    clearInterval(curUser.tooLongInterval);
   }
 }
 

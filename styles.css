@@ -16,6 +16,10 @@ nav {
   float: left;
   padding: 1em;
 }
+#timerIcon, #notIcon{
+  float: right;
+  max-width: 100px;
+}
 article {
   margin-left: 150px;
   border-left: 1px solid black;
