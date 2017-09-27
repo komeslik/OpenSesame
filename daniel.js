@@ -1,14 +1,15 @@
 var curDiv = "login";
-var users = [new user("guest", "guest"), new user("dank", "123")];
+var users = [new user("guest", "guest", "guest@gmail.com", "closed"), new user("dank", "123", "dank@dank.com", "open")];
 var openTimeout;
 var closeTimeout;
 
 function show(divId) {
-  if(divId == 'logout'){ //Change links shown
+  if (divId == 'logout') { //Change links shown
     document.getElementById('isUser').style.display = 'none';
     document.getElementById('noUser').style.display = 'block';
     divId = 'login';
-  } if (divId == 'controls' && curDiv == 'login'){
+  }
+  if (divId == 'controls' && curDiv == 'login') {
     document.getElementById('noUser').style.display = 'none';
     document.getElementById('isUser').style.display = 'block';
   }
@@ -17,10 +18,11 @@ function show(divId) {
   curDiv = divId;
 }
 
-function user(un, pass, email) {
+function user(un, pass, email, door) {
   this.un = un;
   this.pass = pass;
   this.email = email;
+  this.door = door;
 }
 
 function login() {
@@ -38,7 +40,7 @@ function login() {
 }
 
 function addUser() {
-  var newUser = new user(document.getElementById('un').value, document.getElementById('pass').value, document.getElementById('email').value);
+  var newUser = new user(document.getElementById('un').value, document.getElementById('pass').value, document.getElementById('email').value, "closed");
   if (users.some(function(e) {
       return e.un == newUser.un;
     })) {
@@ -53,6 +55,17 @@ function addUser() {
     document.getElementById('pass').value = "";
     document.getElementById('pass2').value = "";
     show('login');
+  }
+}
+
+function recoverPass() {
+  var userI = users.findIndex(function(e) {
+    return e.un == document.getElementById('recUser').value;
+  });
+  if (userI >= 0) {
+    alert("Password: " + users[userI].pass);
+  } else {
+    alert("User does not exist!");
   }
 }
 
