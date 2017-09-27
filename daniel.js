@@ -60,8 +60,8 @@ function login() {
       var image3 = document.getElementById("door3");
       image3.src = "garageClosed.svg";
     }
-    document.getElementById('doorClosedNotification').checked = curUser.doorClosedNotification;
-    document.getElementById('doorOpenNotification').checked = curUser.doorOpenNotification;
+    document.getElementById('doorClosedNotification').checked = curUser.notifyClosed;
+    document.getElementById('doorOpenNotification').checked = curUser.notifyOpen;
     document.getElementById('doorLeftOpenNotification').checked = curUser.notifyOpenTooLong;
     document.getElementById('howLong').value = curUser.howLong;
     notifyOpenTooLong();
