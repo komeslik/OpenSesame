@@ -1,3 +1,4 @@
+var curUser;
 var curDiv = "login";
 var users = [new user("guest", "guest", "guest@gmail.com", "closed"), new user("dank", "123", "dank@dank.com", "open")];
 var openTimeout;
@@ -33,10 +34,16 @@ function login() {
     alert("Success!");
     document.getElementById('user').value = "";
     document.getElementById('password').value = "";
+    curUser = users[userI];
     show('controls');
   } else {
     alert("Invalid credentials.");
   }
+}
+
+function logout(){
+  curUser = null;
+  show('logout');
 }
 
 function addUser() {
